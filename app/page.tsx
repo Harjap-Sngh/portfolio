@@ -1,101 +1,158 @@
+"use client";
+
+import { SocialLinks } from "@/components/ui/social-links";
 import Image from "next/image";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import Link from "next/link";
+import { useState } from "react";
+import { IconCloud } from "@/components/ui/icon-cloud";
+import { Globe } from "@/components/ui/globe";
+import { CopyButton } from "@/components/ui/copy-button";
+
+const slugs = [
+  "typescript",
+  "javascript",
+  "dart",
+  "java",
+  "react",
+  "flutter",
+  "android",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express",
+  "nextdotjs",
+  "prisma",
+  "amazonaws",
+  "postgresql",
+  "firebase",
+  "nginx",
+  "vercel",
+  "testinglibrary",
+  "jest",
+  "cypress",
+  "docker",
+  "git",
+  "jira",
+  "github",
+  "gitlab",
+  "visualstudiocode",
+  "androidstudio",
+  "sonarqube",
+  "figma",
+];
+
+const images = slugs.map(
+  (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
+);
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [activeIndex, setActiveIndex] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const toggleContent = (index: number) => {
+    setActiveIndex(activeIndex === index ? 0 : index); // Toggle visibility
+  };
+  return (
+    <div>
+      {/* Scroll Area */}
+      <section className="">
+        <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+          {/* Project 1 */}
+          <div
+            className={`border-b-2 border-brownShade mb-3 ${
+              activeIndex === 0
+                ? "animate-borderExpand"
+                : "animate-borderContract"
+            }`}
+            onClick={() => {
+              toggleContent(0);
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="flex justify-between">
+              <span className="">Project 1</span>
+              <span>↗</span>
+            </div>
+            <Link href="/">
+              <div
+                className={`${
+                  activeIndex === 0 ? "" : "hidden"
+                }flex justify-center items-center`}
+              >
+                {activeIndex === 0 && (
+                  <Image
+                    crossOrigin="anonymous"
+                    alt="project1"
+                    src={"./github.svg"}
+                    width={200}
+                    height={0}
+                    className="rounded-2xl hover:scale-150 animate-fadeIn"
+                  />
+                )}
+              </div>
+            </Link>
+          </div>
+          {/* Project 2 */}
+          <div
+            className={`border-b-2 border-brownShade mb-3 ${
+              activeIndex === 1
+                ? "animate-borderExpand"
+                : "animate-borderContract"
+            }`}
+            onClick={() => {
+              toggleContent(1);
+            }}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <div className="flex justify-between">
+              <span className="">Project 2</span>
+              <span>↗</span>
+            </div>
+            <Link href="/">
+              <div
+                className={`${
+                  activeIndex === 1 ? "" : "hidden"
+                } flex justify-center items-center`}
+              >
+                {activeIndex === 1 && (
+                  <Image
+                    crossOrigin="anonymous"
+                    alt="project2"
+                    src={"./images/css.svg"}
+                    width={200}
+                    height={0}
+                    className="rounded-2xl hover:scale-150 animate-fadeIn"
+                  />
+                )}
+              </div>
+            </Link>
+          </div>
+        </ScrollArea>
+      </section>
+      {/* Social Links */}
+      <section className=" border-4 border-gray-200 p-4 w-fit rounded">
+        <SocialLinks
+          socials={[
+            { name: "Twitter", image: "/twitter.svg" },
+            { name: "GitHub", image: "/github.svg" },
+            { name: "LinkedIn", image: "/linkedin.svg" },
+            { name: "Instagram", image: "/instagram.svg" },
+          ]}
+        />
+      </section>
+      {/* Icon Cloud */}
+      <div className="relative flex size-full items-center justify-center overflow-hidden">
+        <IconCloud images={images} />
+      </div>
+      {/* Globe */}
+      {/* <section className="border-4 border-gray-200 p-4 w-fit rounded">
+        <Globe />
+      </section> */}
+      {/* Contact me */}
+      <section className="border-4 border-gray-200 p-4 w-fit rounded bg-black">
+        <CopyButton
+          content="This is a very serious and important message. Thanks for copying it!"
+          copyMessage="Copied very important message to clipboard!"
+        />
+      </section>
     </div>
   );
 }
