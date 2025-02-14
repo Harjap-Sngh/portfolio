@@ -62,6 +62,7 @@ export default {
         fadeIn: "fadeIn 2s ease-out forwards",
         borderExpand: "borderExpand 1s ease-out forwards",
         borderContract: "borderContract 1s ease-out forwards",
+        shine: "shine 5s linear infinite",
       },
       keyframes: {
         movement: {
@@ -84,6 +85,10 @@ export default {
         borderContract: {
           "0%": { height: "380px" }, // Start with a thick border
           "100%": { height: "40px" }, // End with no border
+        },
+        shine: {
+          "0%": { "background-position": "100%" },
+          "100%": { "background-position": "-100%" },
         },
       },
     },

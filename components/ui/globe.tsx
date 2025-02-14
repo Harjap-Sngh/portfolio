@@ -6,8 +6,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const GLOBE_CONFIG: COBEOptions = {
-  width: 800,
-  height: 800,
+  width: 400,
+  height: 400,
   onRender: () => {},
   devicePixelRatio: 2,
   phi: 0,
@@ -88,7 +88,7 @@ export function Globe({
   return (
     <div
       className={cn(
-        "absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[600px]",
+        "relative inset-0 mx-auto aspect-[1/1] w-full max-w-[400px]",
         className
       )}
     >
