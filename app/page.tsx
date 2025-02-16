@@ -61,16 +61,16 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 bg-[#0f0f12]/80 backdrop-blur-sm z-50 border-b border-[#1f1f23]">
         <Header />
       </header>
-      <main className="pt-24 px-4 pb-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-12 grid-rows-[auto,auto,1fr] gap-6 md:gap-0 md:space-x-6">
+      <main className="pt-24 px-4 pb-8 mx-auto">
+        <div className="grid grid-rows-[auto,auto,1fr] gap-4">
           {/* Hi There */}
-          <section className="col-span-12 md:col-span-6 lg:col-span-3 row-start-1 row-end-1 mb-6">
-            <section className="col-span-12 md:col-span-3 row-span-1">
+          <section className="col-span-12 md:col-span-3 lg:col-span-2 row-span-1 row-start-1 row-end-1 h-52">
+            <section className="h-[100%]">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="flex flex-col text-left p-4 w-fit rounded bg-[#1E2433] border border-[#2E3447]"
+                className="flex flex-col text-left rounded bg-[rgb(30,36,51)] border border-[#2E3447] w-[100%] h-[100%] p-7"
               >
                 <FadeText
                   className="text-4xl font-bold text-white"
@@ -92,18 +92,21 @@ export default function Home() {
             </section>
           </section>
           {/* About me */}
-          <section className="col-span-12 md:col-span-4 row-span-1 row-start-1 row-end-1 mb-6 text-white">
+          <section className="col-span-12 md:col-span-2 row-span-1 row-start-1 row-end-1 text-white">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               className="h-full p-4 rounded-xl bg-[#1E2433] border border-[#2E3447]"
             >
-              <DecryptedText
+              A passionate software developer with over 5 years of experience in
+              building modern web applications. Specializing in React, Next.js,
+              and full-stack development.
+              {/* <DecryptedText
                 text=" A passionate software developer with over "
                 speed={100}
                 maxIterations={20}
-                characters="ABCD1234!?"
+                characters="ABCD"
                 className="revealed"
                 parentClassName="all-letters"
                 encryptedClassName="encrypted"
@@ -125,21 +128,20 @@ export default function Home() {
               />
               <br />
               <DecryptedText
-                text="Specializing in React, Next.js, and
-          full-stack development."
+                text="Specializing in React, Next.js, and full-stack development."
                 speed={25}
                 maxIterations={20}
-                characters="ABCD1234!?"
+                characters="ABCD12"
                 className="revealed"
                 parentClassName="all-letters"
                 encryptedClassName="encrypted"
                 animateOn="view"
                 sequential={true}
-              />
+              /> */}
             </motion.div>
           </section>
           {/* Contact me */}
-          <section className="col-span-12 md:col-span-3 row-span-2">
+          <section className="col-span-12 md:col-span-2 row-span-2 row-start-2">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -170,18 +172,18 @@ export default function Home() {
             </motion.div>
           </section>
           {/* Globe */}
-          <section className="col-span-12 md:col-span-3 row-span-2">
+          <section className="col-span-12 md:col-span-2 row-span-2 row-start-2">
             <div className="h-full rounded-xl bg-[#1E2433] border border-[#2E3447] p-4">
               <Globe />
               <div className="h-full flex items-center justify-center text-white/50"></div>
             </div>
           </section>
           {/* Icon Cloud */}
-          <div className="col-span-12 md:col-span-3 row-span-2 rounded-xl bg-[#1E2433] border border-[#2E3447] overflow-hidden row-start-1">
+          <div className="row-span-2 rounded-xl bg-[rgb(30,36,51)] border border-[#2E3447] overflow-hidden row-start-1">
             <IconCloud images={images} />
           </div>
           {/* Projects */}
-          <section className="row-span-3 row-start-1 col-span-4 space-y-6 text-white">
+          <section className=" col-span-12 md:col-span-5 row-span-3 row-start-1 space-y-6 text-white">
             <ScrollArea className="h-[100%] w-[100%] rounded-md border p-4">
               {/* Project 1 */}
               <div
@@ -254,7 +256,7 @@ export default function Home() {
             </ScrollArea>
           </section>
           {/* Social Links */}
-          <section className="col-span-12 lg:col-span-4 row-start-3 row-end-3 mb-4 text-white">
+          <section className="row-start-3 row-end-3 mb-4 text-white mt-16">
             <SocialLinks
               socials={[
                 { name: "Twitter", image: "/twitter.svg" },
