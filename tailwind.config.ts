@@ -63,6 +63,7 @@ export default {
         borderExpand: "borderExpand 1s ease-out forwards",
         borderContract: "borderContract 1s ease-out forwards",
         shine: "shine 5s linear infinite",
+        wave: "wave 2.5s ease-in-out infinite",
       },
       keyframes: {
         movement: {
@@ -90,6 +91,19 @@ export default {
           "0%": { "background-position": "100%" },
           "100%": { "background-position": "-100%" },
         },
+        wave: {
+          "0%": { transform: "rotate(0deg)" },
+          "10%": { transform: "rotate(14deg)" },
+          "20%": { transform: "rotate(-8deg)" },
+          "30%": { transform: "rotate(14deg)" },
+          "40%": { transform: "rotate(-4deg)" },
+          "50%": { transform: "rotate(10deg)" },
+          "60%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(0deg)" },
+        },
+      },
+      transformOrigin: {
+        "70-70": "70% 70%",
       },
     },
   },

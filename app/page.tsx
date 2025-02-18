@@ -12,6 +12,7 @@ import { Toaster } from "@/components/ui/sonner";
 import DecryptedText from "@/components/ui/decryptedText";
 import { FadeText } from "@/components/ui/fade-text";
 import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
 
 const slugs = [
   "typescript",
@@ -46,6 +47,8 @@ const slugs = [
   "figma",
 ];
 
+const techUsed = ["Next.js", "React", "TypeScript", "Dart", "Java", "Flutter"];
+
 const images = slugs.map(
   (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
 );
@@ -57,47 +60,18 @@ export default function Home() {
     setActiveIndex(activeIndex === index ? 0 : index); // Toggle visibility
   };
   return (
-    <div className="min-h-screen bg-[#101828] ">
+    <div className="min-h-screen bg-[rgb(16,24,40)] ">
       <header className="fixed top-0 left-0 right-0 bg-[#0f0f12]/80 backdrop-blur-sm z-50 border-b border-[#1f1f23]">
         <Header />
       </header>
       <main className="pt-24 px-4 pb-8 mx-auto">
-        <div className="grid grid-rows-[auto,auto,1fr] gap-4">
-          {/* Hi There */}
-          <section className="col-span-12 md:col-span-3 lg:col-span-2 row-span-1 row-start-1 row-end-1 h-52">
-            <section className="h-[100%]">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="flex flex-col text-left rounded bg-[rgb(30,36,51)] border border-[#2E3447] w-[100%] h-[100%] p-7"
-              >
-                <FadeText
-                  className="text-4xl font-bold text-white"
-                  direction="up"
-                  framerProps={{
-                    show: { transition: { delay: 0.2 } },
-                  }}
-                  text="Hi,"
-                />
-                <FadeText
-                  className="text-4xl font-bold text-white"
-                  direction="up"
-                  framerProps={{
-                    show: { transition: { delay: 0.4 } },
-                  }}
-                  text="there!"
-                />
-              </motion.div>
-            </section>
-          </section>
+        <div className="grid grid-cols-12 grid-rows-[350px,auto,auto] gap-4">
           {/* About me */}
-          <section className="col-span-12 md:col-span-2 row-span-1 row-start-1 row-end-1 text-white">
+          <section className="col-span-12 md:col-span-2 row-start-1 row-end-1 flex flex-row text-left rounded bg-[rgb(30,36,51)] border border-[#2E3447] w-[100%] h-[100%] p-7 gap-7">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="h-full p-4 rounded-xl bg-[#1E2433] border border-[#2E3447]"
             >
               A passionate software developer with over 5 years of experience in
               building modern web applications. Specializing in React, Next.js,
@@ -140,6 +114,42 @@ export default function Home() {
               /> */}
             </motion.div>
           </section>
+          {/* Hi there */}
+          <section className="col-span-12 md:col-span-3 row-start-1 flex flex-col text-left rounded bg-[rgb(30,36,51)] border border-[#2E3447] w-[100%] h-[100%] p-7 gap-7">
+            <span className="text-7xl animate-wave transform-origin-[70%_70%] block">
+              👋🏼
+            </span>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col"
+            >
+              <FadeText
+                className="text-7xl font-bold text-white"
+                direction="up"
+                framerProps={{
+                  show: { transition: { delay: 0.2 } },
+                }}
+                text="Hi,"
+              />
+              <FadeText
+                className="text-7xl font-bold text-white"
+                direction="up"
+                framerProps={{
+                  show: { transition: { delay: 0.4 } },
+                }}
+                text="there!"
+              />
+            </motion.div>
+          </section>
+          {/* Globe */}
+          <section className="col-span-12 md:col-span-3 row-span-2 row-start-2">
+            <div className="h-full rounded-xl bg-[#1E2433] border border-[#2E3447] p-4">
+              <Globe />
+              <div className="h-full flex items-center justify-center text-white/50"></div>
+            </div>
+          </section>
           {/* Contact me */}
           <section className="col-span-12 md:col-span-2 row-span-2 row-start-2">
             <motion.div
@@ -171,19 +181,12 @@ export default function Home() {
               <Toaster />
             </motion.div>
           </section>
-          {/* Globe */}
-          <section className="col-span-12 md:col-span-2 row-span-2 row-start-2">
-            <div className="h-full rounded-xl bg-[#1E2433] border border-[#2E3447] p-4">
-              <Globe />
-              <div className="h-full flex items-center justify-center text-white/50"></div>
-            </div>
-          </section>
           {/* Icon Cloud */}
-          <div className="row-span-2 rounded-xl bg-[rgb(30,36,51)] border border-[#2E3447] overflow-hidden row-start-1">
+          <div className="col-span-12 md:col-span-3 row-span-3 row-start-1 overflow-hidden h-full rounded-xl bg-[#1E2433] border border-[#2E3447] p-4">
             <IconCloud images={images} />
           </div>
           {/* Projects */}
-          <section className=" col-span-12 md:col-span-5 row-span-3 row-start-1 space-y-6 text-white">
+          <section className="col-span-12 md:col-span-4 row-start-1 row-span-2 rounded bg-[rgb(30,36,51)] border border-[#2E3447] p-7">
             <ScrollArea className="h-[100%] w-[100%] rounded-md border p-4">
               {/* Project 1 */}
               <div
@@ -197,7 +200,7 @@ export default function Home() {
                 }}
               >
                 <div className="flex justify-between">
-                  <span className="">Project 1</span>
+                  <span className="">Car Rental</span>
                   <span>↗</span>
                 </div>
                 <Link href="/">
@@ -210,7 +213,7 @@ export default function Home() {
                       <Image
                         crossOrigin="anonymous"
                         alt="project1"
-                        src={"./github.svg"}
+                        src={"/car-rental.png"}
                         width={200}
                         height={0}
                         className="rounded-2xl hover:scale-150 animate-fadeIn"
@@ -218,6 +221,17 @@ export default function Home() {
                     )}
                   </div>
                 </Link>
+                <div>
+                  {techUsed.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="secondary"
+                      className="mr-2 bg-[rgb(255, 77, 48)]"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
               </div>
               {/* Project 2 */}
               <div
@@ -256,10 +270,9 @@ export default function Home() {
             </ScrollArea>
           </section>
           {/* Social Links */}
-          <section className="row-start-3 row-end-3 mb-4 text-white mt-16">
+          <section className="col-span-12 md:col-span-4 row-start-3 flex justify-around rounded bg-[rgb(30,36,51)] border border-[#2E3447] w-[100%] h-[100%] p-7">
             <SocialLinks
               socials={[
-                { name: "Twitter", image: "/twitter.svg" },
                 { name: "GitHub", image: "/github.svg" },
                 { name: "LinkedIn", image: "/linkedin.svg" },
                 { name: "Instagram", image: "/instagram.svg" },
