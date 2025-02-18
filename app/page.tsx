@@ -12,7 +12,7 @@ import { Toaster } from "@/components/ui/sonner";
 import DecryptedText from "@/components/ui/decryptedText";
 import { FadeText } from "@/components/ui/fade-text";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
+import Aurora from "@/components/ui/aurora";
 
 const slugs = [
   "typescript",
@@ -61,10 +61,13 @@ export default function Home() {
   };
   return (
     <div className="min-h-screen bg-[rgb(16,24,40)] ">
+      <div className="fixed top-0 left-0 right-0 bottom-0 z-0 opacity-35 h-screen">
+        <Aurora colorStops={["#3A29FF", "#FF94B4", "#FF3232"]} speed={0.5} />
+      </div>
       <header className="fixed top-0 left-0 right-0 bg-[#0f0f12]/80 backdrop-blur-sm z-50 border-b border-[#1f1f23]">
         <Header />
       </header>
-      <main className="pt-24 px-4 pb-8 mx-auto">
+      <main className="pt-24 px-4 pb-8 mx-auto z-40">
         <div className="grid grid-cols-12 grid-rows-[350px,auto,auto] gap-4">
           {/* About me */}
           <section className="col-span-12 md:col-span-2 row-start-1 row-end-1 flex flex-row text-left rounded bg-[rgb(30,36,51)] border border-[#2E3447] w-[100%] h-[100%] p-7 gap-7">
@@ -116,7 +119,7 @@ export default function Home() {
           </section>
           {/* Hi there */}
           <section className="col-span-12 md:col-span-3 row-start-1 flex flex-col text-left rounded bg-[rgb(30,36,51)] border border-[#2E3447] w-[100%] h-[100%] p-7 gap-7">
-            <span className="text-7xl animate-wave transform-origin-[70%_70%] block">
+            <span className="text-7xl animate-wave transform-origin-[70-70] inline-flex">
               👋🏼
             </span>
             <motion.div
@@ -147,7 +150,6 @@ export default function Home() {
           <section className="col-span-12 md:col-span-3 row-span-2 row-start-2">
             <div className="h-full rounded-xl bg-[#1E2433] border border-[#2E3447] p-4">
               <Globe />
-              <div className="h-full flex items-center justify-center text-white/50"></div>
             </div>
           </section>
           {/* Contact me */}
@@ -156,10 +158,10 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="p-6 rounded-xl bg-[#1E2433] border border-[#2E3447] flex flex-col justify-between"
+              className=" h-[100%] rounded-xl bg-[#1E2433] border flex flex-col justify-between pt-6 pb-6"
             >
-              <div className="p-5 bg-brownShade h-60 rounded-2xl flex flex-col justify-between font-sans text-textColor">
-                <div className="flex justify-between">
+              <div className="bg-brownShade h-full rounded-2xl flex flex-col justify-between font-sans text-textColor">
+                <div className="flex justify-between pl-6 pr-6">
                   <span className="text-xs font-light">
                     Have some
                     <br />
@@ -167,11 +169,11 @@ export default function Home() {
                   </span>
                   <div className="text-3xl animate-movement pr-2">↗</div>
                 </div>
-                <div className="text-3xl font-bold">
+                <div className="text-3xl font-bold pl-6 pr-6">
                   Contact <span className="italic">me</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between mt-4 border-2 rounded-md p-2 text-sm">
+              <div className="flex mt-4 rounded-md p-2 text-sm gap-2">
                 <CopyButton
                   content="singhharjap705@gmail.com"
                   copyMessage="Email-ID copied to clipboard!"
@@ -187,19 +189,20 @@ export default function Home() {
           </div>
           {/* Projects */}
           <section className="col-span-12 md:col-span-4 row-start-1 row-span-2 rounded bg-[rgb(30,36,51)] border border-[#2E3447] p-7">
-            <ScrollArea className="h-[100%] w-[100%] rounded-md border p-4">
+            <ScrollArea className="h-[100%] w-[100%] rounded-md p-4">
+              <div className="text-3xl font-bold mb-6">Projects</div>
               {/* Project 1 */}
               <div
-                className={`border-b-2 border-brownShade mb-3 ${
+                className={`border-b-2 border-brownShade ${
                   activeIndex === 0
-                    ? "animate-borderExpand"
-                    : "animate-borderContract"
+                    ? "animate-borderExpand mb-20"
+                    : "animate-borderContract mb-3"
                 }`}
                 onClick={() => {
                   toggleContent(0);
                 }}
               >
-                <div className="flex justify-between">
+                <div className="flex justify-between mb-5">
                   <span className="">Car Rental</span>
                   <span>↗</span>
                 </div>
@@ -207,7 +210,7 @@ export default function Home() {
                   <div
                     className={`${
                       activeIndex === 0 ? "" : "hidden"
-                    }flex justify-center items-center`}
+                    } flex justify-center items-center flex-col h-fit`}
                   >
                     {activeIndex === 0 && (
                       <Image
@@ -216,22 +219,23 @@ export default function Home() {
                         src={"/car-rental.png"}
                         width={200}
                         height={0}
-                        className="rounded-2xl hover:scale-150 animate-fadeIn"
+                        className="rounded-2xl hover:scale-120 animate-fadeIn w-full mb-3 "
                       />
+                    )}
+                    {activeIndex === 0 && (
+                      <div className="animate-fadeIn">
+                        {techUsed.map((tech) => (
+                          <div
+                            key={tech}
+                            className="inline-block bg-[#8f2a1b] rounded-full px-2 py-1 text-xs font-semibold text-white mr-2 mb-2"
+                          >
+                            {tech}
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </div>
                 </Link>
-                <div>
-                  {techUsed.map((tech) => (
-                    <Badge
-                      key={tech}
-                      variant="secondary"
-                      className="mr-2 bg-[rgb(255, 77, 48)]"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
               </div>
               {/* Project 2 */}
               <div

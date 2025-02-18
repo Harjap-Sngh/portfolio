@@ -113,9 +113,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       const z = Math.sin(phi) * r;
 
       newIcons.push({
-        x: x * 175,
-        y: y * 175,
-        z: z * 175,
+        x: x * 200,
+        y: y * 300,
+        z: z * 300,
         scale: 1,
         opacity: 1,
         id: i,
@@ -310,8 +310,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   return (
     <canvas
       ref={canvasRef}
-      width={450}
-      height={400}
+      width={320}
+      height={700}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
